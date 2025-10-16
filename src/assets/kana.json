@@ -1,0 +1,22 @@
+[
+  { "name": "a", "nameRu": "а", "hiragana": "あ" },
+  { "name": "i", "nameRu": "и", "hiragana": "い" },
+  { "name": "o", "nameRu": "о", "hiragana": "お" },
+  { "name": "u", "nameRu": "у", "hiragana": "う" },
+  { "name": "e", "nameRu": "э", "hiragana": "え" },
+  { "name": "ka", "nameRu": "ка", "hiragana": "か" },
+  { "name": "ki", "nameRu": "ки", "hiragana": "き" },
+  { "name": "ko", "nameRu": "ко", "hiragana": "こ" },
+  { "name": "ku", "nameRu": "ку", "hiragana": "く" },
+  { "name": "ke", "nameRu": "кэ", "hiragana": "け" },
+  { "name": "sa", "nameRu": "са", "hiragana": "さ" },
+  { "name": "shi", "nameRu": "си", "hiragana": "し" },
+  { "name": "so", "nameRu": "со", "hiragana": "そ" },
+  { "name": "su", "nameRu": "су", "hiragana": "す" },
+  { "name": "se", "nameRu": "кэ", "hiragana": "せ" },
+  { "name": "ta", "nameRu": "та", "hiragana": "た" },
+  { "name": "chi", "nameRu": "ти", "hiragana": "ち" },
+  { "name": "to", "nameRu": "то", "hiragana": "と" },
+  { "name": "tsu", "nameRu": "цу", "hiragana": "つ" },
+  { "name": "te", "nameRu": "тэ", "hiragana": "て" }
+]

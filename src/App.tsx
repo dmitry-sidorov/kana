@@ -1,34 +1,75 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+
+import kanaList from './assets/kana.json';
 import './App.css'
 
+interface Kana {
+  name: string;
+  nameRu: string;
+  hiragana: string;
+}
+
 function App() {
-  const [count, setCount] = useState(0)
+  const length = kanaList.length;
+  const [currentKana, setCurrentKana] = useState<Kana>();
+  const [showHiragana, setShowHiragana] = useState(false);
+  const [alwaysShowKana, setAlwaysShowKana] = useState(false);
+  const dictationButtonText = `Dictation mode ${alwaysShowKana ? 'OFF' : 'ON'}`;
+
+  useEffect(() => {
+    pickKana();
+  }, [])
+
+  const pickKana = () => {
+    const kana = kanaList[Math.floor(Math.random() * length)];
+
+    setCurrentKana(kana);
+  }
+
+  const generateKana = () => {
+    pickKana();
+    setShowHiragana(false);
+  }
+
+  const onKeyDown = ({ code }) => {
+    if (code === 'Enter') generateKana();
+  }
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className='main row' onKeyDown={onKeyDown}>
+      <div className='column gap-20'>
+        <button
+          className='primary-button'
+          onClick={generateKana}
+        >
+          Generate
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        {currentKana &&
+          <div className='column'>
+            <span className='label'>Sound:</span>
+            <span className='sound'>{`${currentKana.name} (${currentKana.nameRu})`}</span>
+          </div>
+        }
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+       <div className='column gap-20'>
+        <button className='secondary-button' onClick={() => setShowHiragana(true)}>
+          Show kana
+        </button>
+          <div className='column'>
+            <span className='label'>Hiragana:</span>
+            {currentKana && (showHiragana || alwaysShowKana) &&
+              <span className='kana'>{currentKana.hiragana}</span>
+            }
+          </div>
+       </div>
+      <button
+        className={`dictation-button${alwaysShowKana ? '' : ' dictation-button__on'}`}
+        onClick={() => setAlwaysShowKana(!alwaysShowKana)}
+      >
+        {dictationButtonText}
+      </button>
+    </div>
   )
 }
 
