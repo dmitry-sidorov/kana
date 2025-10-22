@@ -5,7 +5,6 @@ import './App.css'
 
 interface Kana {
   name: string;
-  nameRu: string;
   hiragana: string;
 }
 
@@ -48,7 +47,7 @@ function App() {
         {currentKana &&
           <div className='column'>
             <span className='label'>Sound:</span>
-            <span className='sound'>{`${currentKana.name} (${currentKana.nameRu})`}</span>
+            <span className='sound'>{currentKana.name}</span>
           </div>
         }
       </div>
