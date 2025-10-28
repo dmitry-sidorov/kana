@@ -18,5 +18,15 @@
   { "name": "chi", "hiragana": "ち" },
   { "name": "to", "hiragana": "と" },
   { "name": "tsu", "hiragana": "つ" },
-  { "name": "te", "hiragana": "て" }
+  { "name": "te", "hiragana": "て" },
+  { "name": "na", "hiragana": "な" },
+  { "name": "ni", "hiragana": "に" },
+  { "name": "nu", "hiragana": "ぬ" },
+  { "name": "ne", "hiragana": "ね" },
+  { "name": "no", "hiragana": "の" },
+  { "name": "ha", "hiragana": "は" },
+  { "name": "hi", "hiragana": "ひ" },
+  { "name": "fu", "hiragana": "ふ" },
+  { "name": "he", "hiragana": "へ" },
+  { "name": "ho", "hiragana": "ほ" }
 ]
