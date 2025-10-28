@@ -14,6 +14,7 @@ function App() {
   const [showHiragana, setShowHiragana] = useState(false);
   const [alwaysShowKana, setAlwaysShowKana] = useState(false);
   const dictationButtonText = `Dictation mode ${alwaysShowKana ? 'OFF' : 'ON'}`;
+  const mainButtonText = showHiragana || alwaysShowKana ? 'Generate' : 'Reveal';
 
   useEffect(() => {
     pickKana();
@@ -30,31 +31,39 @@ function App() {
     setShowHiragana(false);
   }
 
-  const onKeyDown = ({ code }) => {
-    if (code === 'Enter') generateKana();
-  }
-
+  const toogleMainButton = () => {
+    if (showHiragana || alwaysShowKana) {
+      generateKana();
+    } else {
+      setShowHiragana(true);
+    }
+  };
 
   return (
-    <div className='main row' onKeyDown={onKeyDown}>
+    <div className='main row'>
       <div className='column gap-20'>
         <button
-          className='primary-button'
-          onClick={generateKana}
+          className={showHiragana ? 'primary-button' : 'secondary-button'}
+          onClick={toogleMainButton}
         >
-          Generate
+          {mainButtonText}
         </button>
+        <button
+          className={`dictation-button${alwaysShowKana ? '' : ' dictation-button__on'}`}
+          onClick={() => setAlwaysShowKana(!alwaysShowKana)}
+        >
+          {dictationButtonText}
+        </button>
+      </div>
+      <div className='row gap-20'>
         {currentKana &&
           <div className='column'>
-            <span className='label'>Sound:</span>
+            <span className='label'>Pronounce:</span>
             <span className='sound'>{currentKana.name}</span>
           </div>
         }
       </div>
        <div className='column gap-20'>
-        <button className='secondary-button' onClick={() => setShowHiragana(true)}>
-          Show kana
-        </button>
           <div className='column'>
             <span className='label'>Hiragana:</span>
             {currentKana && (showHiragana || alwaysShowKana) &&
@@ -62,12 +71,6 @@ function App() {
             }
           </div>
        </div>
-      <button
-        className={`dictation-button${alwaysShowKana ? '' : ' dictation-button__on'}`}
-        onClick={() => setAlwaysShowKana(!alwaysShowKana)}
-      >
-        {dictationButtonText}
-      </button>
     </div>
   )
 }
